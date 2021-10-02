@@ -68,7 +68,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         rm -rf package/slipdaly
-        git clone https://github.com/slipdaly/luci-app-adblock-plus.git package/luci-app-adblock-plus
+        git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus.git package/luci-app-ssr-plus
     - name: Configuration Customization - Build_Phicomm_K1K2
       env:
         CONFIG_FILE: 'phicomm_k1k2.config'
