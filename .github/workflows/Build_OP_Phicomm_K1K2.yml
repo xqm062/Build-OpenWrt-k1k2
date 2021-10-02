@@ -60,15 +60,17 @@ jobs:
       run: |
         rm -rf openwrt
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
         ./scripts/feeds update -a && ./scripts/feeds install -a
-    - name: Import external feeds - passwall
-      working-directory: ./openwrt
-      run: |
-        rm -rf package/slipdaly
-        git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus.git package/luci-app-ssr-plus
+   # - name: Import external feeds - passwall
+   #   working-directory: ./openwrt
+   #   run: |
+   #     rm -rf package/slipdaly
+   #     git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus.git package/luci-app-ssr-plus
     - name: Configuration Customization - Build_Phicomm_K1K2
       env:
         CONFIG_FILE: 'phicomm_k1k2.config'
